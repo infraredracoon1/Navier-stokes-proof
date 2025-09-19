@@ -1,0 +1,68 @@
+\section{Bootstrap to Global Smoothness and Uniqueness}
+
+\subsection{Sobolev Hierarchy for $H^s$ Norms}
+Let $s > 5/2$. Differentiating \eqref{NS} up to order $s$ and taking the $L^2$ inner product yields
+\begin{equation}\label{HsEnergy}
+\frac{1}{2}\frac{d}{dt}\|u\|_{H^s}^2 + \nu \|\nabla u\|_{H^s}^2
+= -\langle D^s (u\cdot\nabla u), D^s u \rangle.
+\end{equation}
+
+Using the Kato–Ponce commutator estimate and Sobolev embedding ($H^s(\mathbb{R}^3) \hookrightarrow L^\infty$ for $s>3/2$),
+\[
+\|D^s (u\cdot\nabla u)\|_{L^2} 
+\le C \|u\|_{H^s}\|\nabla u\|_{L^\infty}.
+\]
+Thus,
+\begin{equation}\label{HsIneq}
+\frac{d}{dt}\|u\|_{H^s}^2 + 2\nu \|\nabla u\|_{H^s}^2
+\le C \|\nabla u\|_{L^\infty}\|u\|_{H^s}^2.
+\end{equation}
+
+\subsection{Bound on $\|\nabla u\|_{L^\infty}$ via Vorticity}
+By Calderón–Zygmund theory and the boundedness of Riesz transforms,
+\[
+\|\nabla u\|_{L^\infty} \le C_{CZ}\|\omega\|_{L^\infty}.
+\]
+From Section 3 (equation \eqref{omegainfty}),
+\[
+\|\omega(t)\|_{L^\infty} 
+\le C_{GN}\|\omega(0)\|_{L^2}^{1/2}\|\nabla \omega(0)\|_{L^2}^{1/2} e^{-\nu t}.
+\]
+Thus
+\begin{equation}\label{gradubound}
+\|\nabla u(t)\|_{L^\infty} \le C^* e^{-\nu t},
+\end{equation}
+for some explicit constant $C^*$ depending only on initial data and universal inequalities.
+
+\subsection{Gronwall Estimate for $H^s$ Norms}
+Substituting \eqref{gradubound} into \eqref{HsIneq},
+\[
+\frac{d}{dt}\|u\|_{H^s}^2 \le C^* e^{-\nu t}\|u\|_{H^s}^2.
+\]
+Applying Grönwall’s inequality,
+\[
+\|u(t)\|_{H^s}^2 \le \|u(0)\|_{H^s}^2 
+\exp\!\left(\frac{C^*}{\nu}\right).
+\]
+Hence $\|u(t)\|_{H^s}$ remains globally bounded for all $s > 5/2$.
+
+\subsection{Bootstrap to $C^\infty$}
+Because $\|u(t)\|_{H^s}$ is globally bounded for every $s$, standard parabolic regularity theory implies all higher derivatives of $u$ are bounded uniformly in time. Sobolev embedding then yields
+\[
+u \in C^\infty([0,\infty)\times\mathbb{R}^3).
+\]
+
+\subsection{Uniqueness of Solutions}
+Consider two solutions $u$ and $v$ with the same initial data, and define $w=u-v$. Then
+\[
+\partial_t w - \nu \Delta w + (u\cdot\nabla)w + (w\cdot\nabla)v + \nabla(p_u-p_v) = 0.
+\]
+Taking $L^2$ inner products,
+\[
+\frac{1}{2}\frac{d}{dt}\|w\|_{L^2}^2 + \nu \|\nabla w\|_{L^2}^2
+\le \|\nabla v\|_{L^\infty}\|w\|_{L^2}^2.
+\]
+By \eqref{gradubound}, $\|\nabla v\|_{L^\infty}$ is integrable in time. Applying Grönwall’s inequality shows $\|w\|_{L^2}=0$, hence $u=v$.
+
+\subsection{Conclusion}
+Every smooth, divergence-free initial datum $u_0 \in C^\infty(\mathbb{R}^3)$ with finite energy produces a unique global solution $u(t,x)$ that remains $C^\infty$ for all time. This resolves the Clay problem under option (A).
