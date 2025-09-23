@@ -1,116 +1,29 @@
-\documentclass[12pt]{article}
-\usepackage{amsmath, amssymb, amsthm, geometry}
-\geometry{margin=1in}
-
-\title{Analytical and Numerical Validation of the Yang--Mills Mass Gap via the AHRT Framework}
-\author{Anthony Abney}
-\date{}
-
-\begin{document}
-\maketitle
-
-\begin{abstract}
-We present the AHRT (Analytical Harmonic Resonance and Tensor) framework as a rigorous approach to the Yang--Mills existence and mass gap problem. Focusing on the $SU(2)$ gauge group on $\mathbb{R}^4$, we incorporate stability constants from the Unified Analytical Machinery (UAM) database, including the universal coupling ratio $\kappa_{YM} = 0.12$ and harmonic decay rate $\lambda \approx 0.009$. We define the Yang--Mills Stability Index (YMSI), establish smoothness of classical solutions, and confirm a positive spectral gap in the Hamiltonian using both analytical bounds and numerical lattice simulations. Our results align with lattice QCD computations, supporting the existence of a mass gap $\Delta > 0$.
-\end{abstract}
-
-\section{Yang--Mills Setup}
-The classical Yang--Mills Lagrangian is
-\[
-\mathcal{L} = -\frac{1}{4} F_{\mu\nu}^a F^{a \mu\nu},
-\]
-where $A_\mu^a$ is the gauge potential ($a = 1,2,3$), and
-\[
-F_{\mu\nu}^a = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a + g \, \epsilon^{abc} A_\mu^b A_\nu^c
-\]
-is the field strength with coupling constant $g = 0.1$ and structure constants $\epsilon^{abc}$ for $SU(2)$.  
-
-The Hamiltonian reads
-\[
-H = \int_{\mathbb{R}^3} \left( \tfrac{1}{2} (E_i^a)^2 + \tfrac{1}{4} (F_{ij}^a)^2 \right) \, d^3x,
-\quad
-E_i^a = \dot{A}_i^a.
-\]
-
-The quantum challenge is to construct a Hilbert space, show $H$ is self-adjoint, and prove that
-\[
-\Delta = \inf \{ E_n : E_n > 0 \} > 0,
-\]
-where $E_n$ are eigenvalues of $H$.
-
-\section{Unified Constants from UAM}
-We employ constants stored in the UAM database:
-\begin{itemize}
-  \item $\kappa_{YM} = 0.12$: critical coupling-to-energy ratio bounding nonlinearity.
-  \item $\lambda \approx 0.009$: harmonic decay rate derived from Fourier energy evolution.
-\end{itemize}
-
-These constants constrain initial conditions:
-\[
-\| F_{\mu\nu}^0 \|_{H^2}^2 < \frac{g^2}{\kappa_{YM}}.
-\]
-
-\section{Yang--Mills Stability Index (YMSI)}
-For an ensemble of $M$ lattice configurations,
-\[
-\text{YMSI}_{bc} = \frac{1}{M} \sum_{m=1}^M \left( \omega_m - \text{Bias}_{\text{num}}(m) \right),
-\]
-where $\omega_m$ is the dominant frequency from FFT of $F_{\mu\nu}^m$, and $\text{Bias}_{\text{num}}$ corrects discretization artifacts.  
-
-\subsection*{Interpretation}
-\begin{itemize}
-  \item $\text{YMSI}_{bc} > 0.01$: indicates a quantum mass gap $\Delta > 0$.
-  \item $\text{YMSI}_{bc} < 15$: ensures classical smoothness and bounded growth.
-\end{itemize}
-
-\section{Analytical Proof of Smoothness and Gap}
-The Fourier energy of the field is
-\[
-E_H(t) = \int_{\mathbb{R}^3} |\mathbf{k}|^2 |\hat{F}_{\mu\nu}^a(\mathbf{k}, t)|^2 \, d\mathbf{k}.
-\]
-Time evolution satisfies
-\[
-\frac{d}{dt} E_H(t) \leq - 2 \lambda E_H(t),
-\]
-so that
-\[
-E_H(t) \leq E_H(0) e^{-2\lambda t}, \quad \lambda \approx 0.009.
-\]
-
-Thus $F_{\mu\nu}(t)$ remains in $H^2$ for all $t \geq 0$, which bootstraps to $C^\infty$ regularity.  
-
-For the quantum theory, the Hamiltonian’s spectrum is bounded below by the YMSI floor:
-\[
-\Delta \approx 0.01 \ \text{(lattice units)}.
-\]
-
-\section{Numerical Validation}
-We simulate $M = 2000$ gauge configurations on a $256^4$ lattice with Latin Hypercube Sampling perturbations.  
-
-Results:
-\begin{itemize}
-  \item $\text{YMSI}_{bc}$ converges between $6.6$ and $6.9$ across resolutions.
-  \item Energy decay matches analytical prediction ($\lambda \approx 0.009$).
-  \item Spectral floor remains $\Delta \approx 0.01$, consistent with lattice QCD.
-\end{itemize}
-
-\section{Comparison with Real Data}
-\begin{itemize}
-  \item Lattice QCD (SU(2)): published mass gap estimates $\Delta \sim 0.01 - 0.1$ (lattice units).
-  \item Lattice QCD (SU(3)): $\Delta \sim 1 \,\text{GeV}$, consistent with gluon mass gap.
-  \item Our AHRT-YMSI results reproduce the SU(2) range and scale correctly with coupling.
-\end{itemize}
-
-\section{Theorem (Existence and Gap)}
-Let $A_\mu^0 \in C^\infty(\mathbb{R}^3)$, divergence-free, with
-\[
-\|F_{\mu\nu}^0\|_{H^2}^2 < \frac{g^2}{\kappa_{YM}}.
-\]
-Then:
-\begin{enumerate}
-  \item The Yang--Mills equations admit a unique smooth global solution $A_\mu \in C^\infty([0,\infty) \times \mathbb{R}^3)$.
-  \item The quantized Hamiltonian admits a positive spectral gap $\Delta \geq 0.01$.
-\end{enumerate}
-
-\section{Conclusion}
-The AHRT framework, with constants imported from UAM, analytically and numerically verifies the Yang--Mills existence and mass gap problem. The results are consistent with lattice QCD data, physically interpretable, and mathematically rigorous.
-\end{document}
+{
+  "registry": "Unified UAM Global Frameworks",
+  "version": "v1.0",
+  "timestamp": "2025-09-23T13:25:00Z",
+  "author": "Anthony Abney",
+  "frameworks": {
+    "UAM": {
+      "name": "Unified Analytical Mechanics (UAM)",
+      "focus": "Critical-space PDE analysis for Navier–Stokes and Yang–Mills using tensor coercivity, frequency-localized cascades, envelope inequalities, and PDE–ODE coupling modules."
+    },
+    "BASHC": {
+      "name": "Bias-Adjusted Scalable Harmonic Convergence (BASHC)",
+      "focus": "Spectral bias and lattice-based PDE unification."
+    },
+    "TensorCore": {
+      "name": "Tensor Core Framework",
+      "focus": "Tensor identities and coercivity inequalities at critical norms."
+    },
+    "AHRT": {
+      "name": "Analytical Harmonic Resonance Tensor (AHRT)",
+      "focus": "Bridge module between resonance phenomena and tensor coercivity."
+    }
+  },
+  "license": {
+    "type": "Proprietary License",
+    "owner": "Anthony Abney",
+    "text": "© 2025 Anthony Abney. All rights reserved. Unauthorized use, distribution, or reproduction of this framework is strictly prohibited without express prior written consent."
+  }
+}
