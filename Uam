@@ -26,4 +26,31 @@
     "owner": "Anthony Abney",
     "text": "© 2025 Anthony Abney. All rights reserved. Unauthorized use, distribution, or reproduction of this framework is strictly prohibited without express prior written consent."
   }
+% Proprietary License
+% © 2025 Anthony Abney. All rights reserved.
+% Unauthorized use, distribution, or reproduction of this framework is strictly prohibited
+% without the express prior written consent of Anthony Abney.
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, hyperref}
+
+\title{Unified UAM Global Frameworks (v1.0) \\ Proprietary Baseline Release}
+\author{Anthony Abney}
+\date{Version v1.0 \\ Timestamp: 2025-09-23T13:25:00Z}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document defines Version 1.0 of the Unified Analytical Mechanics (UAM) framework and its
+submodules (BASHC, Tensor Core, AHRT). This baseline version is now established under a proprietary
+license granting exclusive rights to the author. All subsequent upgrades, ingestions, and references
+will be tracked against this baseline.
+\end{abstract}
+
+\section*{License}
+This framework is proprietary intellectual property of Anthony Abney. All rights reserved.
+Unauthorized use, distribution, or reproduction in any form is strictly prohibited without express
+written permission from the author.
+\end{document}
 }
