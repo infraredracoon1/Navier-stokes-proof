@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "project": "Unified Analytical Machine (UAM) Framework",
+  "author": "Anthony Abney",
+  "license": {
+    "name": "Proprietary License v1.0",
+    "text": "UAM, BASHC, AHRT, Tensor Core, and related frameworks developed in this project are proprietary intellectual property of Anthony Abney. All rights reserved. This work integrates adaptations of concepts from prior scholarly works. All rights in those original works remain with their authors. External frameworks, publications, and machine learning tools are cited and credited according to their original licenses. Novel adaptations, unifications, formulations, derivations, and implementations created during this project are the sole intellectual property of Anthony Abney, protected under this proprietary license. Unauthorized reproduction, modification, or redistribution of these original contributions is prohibited without express permission from the author."
+  },
+  "frameworks": {
+    "UAM": {
+      "status": "proprietary",
+      "author": "Anthony Abney",
+      "license": "All Rights Reserved – Proprietary License v1.0",
+      "uam_derivative": true,
+      "citations": [
+        "Escauriaza, Seregin, Šverák (2003)",
+        "Glass, Meyer, Sueur (arXiv:2509.17881)",
+        "Other ingested arXiv sources from PDE, tensor, and fluid dynamics searches"
+      ],
+      "external_authors_acknowledged": true
+    },
+    "BASHC": {
+      "status": "proprietary",
+      "author": "Anthony Abney",
+      "license": "All Rights Reserved – Proprietary License v1.0",
+      "derived_from": [
+        "Navier–Stokes existence and smoothness problem",
+        "Yang–Mills mass gap problem"
+      ],
+      "external_authors_acknowledged": true
+    },
+    "AHRT": {
+      "status": "proprietary",
+      "author": "Anthony Abney",
+      "license": "All Rights Reserved – Proprietary License v1.0",
+      "derived_from": [
+        "Advanced Harmonic Renormalization Tensor methods",
+        "Relevant PDE/physics arXiv frameworks"
+      ],
+      "external_authors_acknowledged": true
+    },
+    "Tensor Core": {
+      "status": "proprietary",
+      "author": "Anthony Abney",
+      "license": "All Rights Reserved – Proprietary License v1.0",
+      "derived_from": [
+        "Tensor decomposition methods in PDE analysis",
+        "arXiv tensor optimization research"
+      ],
+      "external_authors_acknowledged": true
+    }
+  },
+  "authorship_policy": {
+    "proprietary_contributions": "All novel adaptations and unified frameworks developed in this project belong solely to Anthony Abney.",
+    "external_sources": "Original authors retain ownership of their works. All ingested arXiv or published content is acknowledged and cited according to original authorship.",
+    "ml_policy": "If external machine learning models are used, licensing terms from their authors apply. No proprietary ML framework is re-licensed without permission."
+  },
+  "version_control": {
+    "registry_state": "locked",
+    "update_mechanism": "all future upgrades must cite original sources, separate external ownership from proprietary adaptations, and increment version numbers"
+  }
+}
