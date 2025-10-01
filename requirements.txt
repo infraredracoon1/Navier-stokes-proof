@@ -1,0 +1,11 @@
+---
+
+## ⚙️ requirements.txt
+
+```txt
+numpy
+scipy
+matplotlib
+mpi4py
+h5py
+requests     # for JHTDB REST API
