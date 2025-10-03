@@ -1,0 +1,17 @@
+import numpy as np
+
+np.random.seed(42)
+N = 10000
+
+def random_unit_vector():
+    vec = np.random.randn(3)
+    return vec / np.linalg.norm(vec)
+
+omegas = np.array([random_unit_vector() for _ in range(N)])
+e_cs = np.array([random_unit_vector() for _ in range(N)])
+
+cos_theta = np.abs(np.einsum('ij,ij->i', omegas, e_cs))
+A_est = np.mean(cos_theta**2)
+std_A = np.std(cos_theta**2) / np.sqrt(N)
+
+print(f"Estimated A: {A_est:.4f} ± {std_A:.4f}")
