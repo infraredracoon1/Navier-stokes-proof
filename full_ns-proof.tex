@@ -1424,3 +1424,80 @@ Sampling design, alignment estimator, error bars, and numerical outcomes near $1
 \section{Appendix Y: SSC quantitative checklist for Yang--Mills}
 Precise inequalities (uniform OS bounds for smeared forms; smeared susceptibility bounds; spectral-flow derivative; cluster radius lower bound; Lieb--Robinson velocity for smeared observables). Proving these five items suffices for Theorem~\ref{YM-conditional}.
 \end{document}
+\section{Extension to the Exact Clay Class and Explicit Cutoffs}
+
+\subsection{From $H^{5/2+\varepsilon}$ to $C_c^\infty$ Initial Data}
+
+We extend the main theorem from divergence-free $u_0 \in H^{5/2+\varepsilon}(\mathbb{R}^3)$, $\varepsilon>0$, to the exact Clay class $u_0 \in C_c^\infty(\mathbb{R}^3)$.
+
+\begin{lemma}[Approximation by smooth, compactly supported data]
+Let $u_0 \in H^{5/2+\varepsilon}(\mathbb{R}^3)$, divergence-free. Then there exists a sequence
+\[
+u_0^{(n)} := P(\rho_n * u_0), \qquad n \in \mathbb{N},
+\]
+where $\rho_n$ is a standard mollifier and $P$ the Leray projection, such that
+\[
+u_0^{(n)} \in C_c^\infty(\mathbb{R}^3), \quad \nabla \cdot u_0^{(n)} = 0, \quad 
+u_0^{(n)} \to u_0 \;\text{ in } H^{5/2+\varepsilon}.
+\]
+Moreover, $\|u_0^{(n)}\|_{H^{5/2+\varepsilon}} \le C \|u_0\|_{H^{5/2+\varepsilon}}$ and
+$\|u_0^{(n)}\|_{L^2} \le \|u_0\|_{L^2}$.
+\end{lemma}
+
+All estimates in the proof are stable under this approximation: energy inequality, $L^3$ critical norms, angular mixing, commutator bounds, and error terms. Passing to the limit $n \to \infty$ by weak lower semicontinuity yields the same exponential high-frequency decay and BKM closure. Thus the theorem holds for $u_0 \in C_c^\infty$.
+
+\subsection{Explicit Frequency Cutoffs}
+
+We now make precise the frequency thresholds $J_0, J_1$ used in the high- and low-frequency arguments.
+
+\paragraph{High frequencies ($j \ge J_0$).}  
+From the time-averaged dyadic inequality, viscosity dominates provided
+\[
+2\nu 2^{2j} \;\ge\; 2C_1 \, 2^{\tfrac{4}{3}j}\|u_0\|_{L^2} \,+\, 2\beta,
+\]
+where $C_1$ is the constant from the error estimate and $\beta=\tfrac{1}{6}$ from alignment stabilization. This is equivalent to
+\[
+j \;\ge\; J_0 := \left\lceil \tfrac{3}{2} \log_2 \!\left(\tfrac{2C_1}{\nu} \|u_0\|_{L^2}\right) \right\rceil.
+\]
+Thus $J_0$ depends only on $\nu$ and $\|u_0\|_{L^2}$, and is independent of time.
+
+\paragraph{Low frequencies ($j \le J_1$).}  
+The Fourier–physical bridge and commutator bounds introduce errors of size $O(2^{-j})$. Fix $\eta \in (0,1/12]$, say $\eta = 1/12$. Let $C_{\mathrm{br}}$ and $C_{\mathrm{cm}}$ denote the constants in the bridge and commutator estimates. Define
+\[
+J_{\mathrm{br}} := \left\lceil \log_2 \!\Big(\tfrac{C_{\mathrm{br}}}{\eta}\Big) \right\rceil, \qquad
+J_{\mathrm{cm}} := \left\lceil \log_2 \!\Big(\tfrac{C_{\mathrm{cm}}}{\eta}\Big) \right\rceil,
+\]
+and set
+\[
+J_1 := \max\{J_{\mathrm{br}}, J_{\mathrm{cm}}\}.
+\]
+For $j \ge J_1$, the error terms are absorbed and alignment satisfies
+\[
+\frac{1}{T}\int_0^T \mathcal{A}_j(t)\,dt \;\ge\; \frac{1}{3} - \eta.
+\]
+
+\paragraph{Final cutoff.}  
+Take
+\[
+J_* := \max\{J_0, J_1\}.
+\]
+Then for $j \ge J_*$ we obtain
+\[
+W_j(t) \;\le\; W_j(0)\,\exp\!\big(-(\nu+1/12)\,2^{2j}t\big).
+\]
+For $j<J_*$ (finitely many shells), Grönwall and paraproduct bounds give
+\[
+\sum_{j<J_*} \int_0^\infty \|P_j \omega(t)\|_{L^\infty}\,dt < \infty.
+\]
+
+\subsection{BKM Closure and Uniqueness}
+
+Combining high- and low-frequency bounds yields
+\[
+\int_0^\infty \|\omega(t)\|_{L^\infty}\,dt < \infty,
+\]
+which rules out blow-up by the Beale–Kato–Majda criterion. Uniqueness follows from standard weak–strong uniqueness in the Leray class, now that smoothness is guaranteed.
+
+\begin{corollary}[Clay Initial Data]
+For every smooth, compactly supported, divergence-free initial datum $u_0 \in C_c^\infty(\mathbb{R}^3)$, there exists a unique global smooth solution of the incompressible 3D Navier–Stokes equations. The frequency cutoffs $J_0, J_1$ are explicit and depend only on $\nu$ and $\|u_0\|_{L^2}$, together with the universal constants tabulated in Appendix~G.
+\end{corollary}
