@@ -1,0 +1,68 @@
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+# Generate N points on S^2 using Fibonacci lattice for uniform sampling
+def fibonacci_sphere(N):
+    indices = np.arange(0, N, dtype=float) + 0.5
+    phi = np.arccos(1 - 2 * indices / N)
+    theta = np.pi * (1 + 5**0.5) * indices
+    x, y, z = np.sin(phi) * np.cos(theta), np.sin(phi) * np.sin(theta), np.cos(phi)
+    return np.vstack((x, y, z)).T
+
+# Compute angular kernel matrix B
+def angular_kernel_matrix(points):
+    N = len(points)
+    B = np.zeros((N, N))
+    for i in range(N):
+        for j in range(N):
+            cos_angle = np.dot(points[i], points[j])
+            sin2_angle = 1 - cos_angle**2
+            B[i, j] = (3 / (8 * np.pi)) * sin2_angle * (4 * np.pi / N)  # Weight w_j
+    # Normalize rows to sum to 1
+    row_sums = B.sum(axis=1)
+    B = B / row_sums[:, np.newaxis]
+    return B
+
+# Initial density: cos^2(theta) (degree-2 harmonic)
+def initial_density(points):
+    z = points[:, 2]  # cos(theta) = z
+    mu = z**2  # Proportional to cos^2(theta)
+    return mu / mu.sum() * N  # Normalize to sum=N
+
+# Monte Carlo iteration
+def monte_carlo(B, mu0, iters=50):
+    N = len(mu0)
+    variances = []
+    mu = mu0.copy()
+    for k in range(iters):
+        mu = B @ mu
+        var = np.var(mu)
+        variances.append(var)
+    return np.array(variances)
+
+# Main simulation
+N = 10000
+points = fibonacci_sphere(N)
+B = angular_kernel_matrix(points)
+mu0 = initial_density(points)
+variances = monte_carlo(B, mu0)
+
+# Fit log(variance) vs. iteration
+k = np.arange(len(variances))
+log_var = np.log(variances + 1e-10)  # Avoid log(0)
+slope, intercept, r_value, p_value, std_err = stats.linregress(k, log_var)
+
+# Output results
+print(f"Computed slope: {slope:.4f} ± {std_err:.4f}")
+print(f"Expected slope: {np.log(1/5):.4f} (~ -1.6094)")
+print(f"R^2: {r_value**2:.4f}, p-value: {p_value:.4f}")
+
+# Plot
+plt.plot(k, log_var, label='Log(Variance)')
+plt.plot(k, intercept + slope * k, '--', label=f'Fit: slope={slope:.4f}')
+plt.xlabel('Iteration (k)')
+plt.ylabel('Log(Variance)')
+plt.title('Monte Carlo Decay of Angular Density Variance')
+plt.legend()
+plt.show()
